@@ -20,11 +20,9 @@ public class Restaurant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private User user;
     private String name;
     private String address;
-    private byte rating;
-    private String comment;
-    private LocalDateTime visitDate;
-    private List<Photo> photos;
+    private String phone;
+    private String site;
+
 }

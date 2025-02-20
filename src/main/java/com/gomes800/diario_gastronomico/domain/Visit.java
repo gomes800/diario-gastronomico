@@ -33,6 +33,6 @@ public class Visit {
     private String comment;
     private LocalDateTime visitDate;
 
-    @OneToMany(mappedBy = "visita", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "visit", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Photo> photos;
 }

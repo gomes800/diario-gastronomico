@@ -25,7 +25,9 @@ public class User implements Serializable {
     @Setter(AccessLevel.NONE)
     private String password;
     private LocalDateTime createDate;
-    private List<Restaurant> restaurants;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Visit> visits;
+
 
     @PrePersist
     public void prePersist() {

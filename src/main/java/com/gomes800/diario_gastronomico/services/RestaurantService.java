@@ -29,8 +29,8 @@ public class RestaurantService {
     public void updateData(Restaurant entity, Restaurant obj) {
         entity.setName(obj.getName());
         entity.setAddress(obj.getAddress());
-        entity.setRating(obj.getRating());
-        entity.setComment(obj.getComment());
+        entity.setPhone(obj.getPhone());
+        entity.setSite(obj.getSite());
     }
 
     public Restaurant update(Long id, Restaurant obj) {
