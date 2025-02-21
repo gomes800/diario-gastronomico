@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
 @Table(name = "tb_visita")
@@ -33,6 +32,4 @@ public class Visit {
     private String comment;
     private LocalDateTime visitDate;
 
-    @OneToMany(mappedBy = "visit", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Photo> photos;
 }
