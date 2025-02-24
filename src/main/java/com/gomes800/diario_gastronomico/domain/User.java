@@ -5,6 +5,7 @@ import lombok.*;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -32,6 +33,9 @@ public class User implements Serializable {
     @PrePersist
     public void prePersist() {
         createDate = LocalDateTime.now();
+        if (visits == null) {
+            visits = new ArrayList<Visit>();
+        }
     }
 
     @Override
