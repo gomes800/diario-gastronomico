@@ -3,6 +3,7 @@ package com.gomes800.diario_gastronomico.controllers;
 
 import com.gomes800.diario_gastronomico.domain.Restaurant;
 import com.gomes800.diario_gastronomico.services.RestaurantService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,9 +12,10 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/restaurant")
+@RequestMapping("/restaurants")
 public class RestaurantController {
 
+    @Autowired
     private RestaurantService service;
 
     @GetMapping
@@ -22,7 +24,7 @@ public class RestaurantController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity findById(@PathVariable Long id) {
+    public ResponseEntity<Restaurant> findById(@PathVariable Long id) {
         Optional<Restaurant> restaurant = service.findById(id);
         return restaurant.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
