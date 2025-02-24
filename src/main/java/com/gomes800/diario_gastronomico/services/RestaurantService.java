@@ -54,4 +54,8 @@ public class RestaurantService {
             throw new RuntimeException("Database integrity violation: " + e.getMessage());
         }
     }
+
+    public boolean existById(Long id) {
+        return repository.existsById(id);
+    }
 }
