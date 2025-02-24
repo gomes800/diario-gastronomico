@@ -55,4 +55,8 @@ public class UserService {
         }
     }
 
+    public boolean existById(Long id) {
+        return repository.existsById(id);
+    }
+
 }
