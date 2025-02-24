@@ -3,6 +3,7 @@ package com.gomes800.diario_gastronomico.services;
 import com.gomes800.diario_gastronomico.domain.Restaurant;
 import com.gomes800.diario_gastronomico.repositories.RestaurantRepository;
 import jakarta.persistence.EntityNotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +13,7 @@ import java.util.Optional;
 @Service
 public class RestaurantService {
 
+    @Autowired
     private RestaurantRepository repository;
 
     public List<Restaurant> findAll() {
