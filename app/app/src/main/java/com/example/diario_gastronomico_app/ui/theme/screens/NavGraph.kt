@@ -12,6 +12,6 @@ fun NavGraph() {
 
     NavHost(navController = navController, startDestination = "home") {
         composable("home") { HomeScreen(navController)  }
-        composable("restaurants") { RestaurantsScreen() }
+        composable("restaurants") { RestaurantScreen() }
     }
 }
