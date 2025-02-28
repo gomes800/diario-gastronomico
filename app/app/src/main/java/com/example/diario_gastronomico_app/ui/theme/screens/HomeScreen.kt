@@ -16,10 +16,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 
 @Preview
 @Composable
-fun HomeScreen() {
+fun HomeScreen(navController: NavController) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -36,7 +37,7 @@ fun HomeScreen() {
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            Button(onClick = {}) {
+            Button(onClick = { navController.navigate("restaurants") }) {
                 Text("Restaurantes")
             }
         }
