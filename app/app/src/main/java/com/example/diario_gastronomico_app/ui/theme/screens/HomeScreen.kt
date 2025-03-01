@@ -17,8 +17,17 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 
 @Preview
+@Composable
+fun HomeScreenPreview() {
+
+    val navController = rememberNavController()
+
+    HomeScreen(navController)
+}
+
 @Composable
 fun HomeScreen(navController: NavController) {
     Box(
@@ -29,9 +38,9 @@ fun HomeScreen(navController: NavController) {
         Column(
             modifier = Modifier.fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Top // Coloca o conteúdo no topo
+            verticalArrangement = Arrangement.Top
         ) {
-            Spacer(modifier = Modifier.height(32.dp)) // Espaço opcional para afastar do topo
+            Spacer(modifier = Modifier.height(32.dp))
 
             Text(text = "Início", fontSize = 24.sp, color = Color.White)
 
