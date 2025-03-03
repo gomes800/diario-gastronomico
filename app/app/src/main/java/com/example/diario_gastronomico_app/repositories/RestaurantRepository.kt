@@ -10,7 +10,7 @@ class RestaurantRepository {
     suspend fun getRestaurants(): List<Restaurant> {
         return withContext(Dispatchers.IO) {
             try {
-                RetrofitClient.apiService.getRestaurants()
+                RetrofitClient.restaurantService.getRestaurants()
             } catch (e: Exception) {
                 emptyList()
             }
@@ -20,7 +20,7 @@ class RestaurantRepository {
     suspend fun getRestaurantById(id: Long): Restaurant? {
         return withContext(Dispatchers.IO) {
             try {
-                RetrofitClient.apiService.getRestaurantById(id)
+                RetrofitClient.restaurantService.getRestaurantById(id)
             } catch (e: Exception) {
                 null
             }

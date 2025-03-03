@@ -4,7 +4,7 @@ import com.example.diario_gastronomico_app.domain.Restaurant
 import retrofit2.http.GET
 import retrofit2.http.Path
 
-interface ApiService {
+interface RestaurantService {
     @GET("restaurants")
     suspend fun getRestaurants(): List<Restaurant>
 
