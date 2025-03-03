@@ -10,9 +10,10 @@ class VisitRepository {
     suspend fun getVisits(): List<Visit> {
         return withContext(Dispatchers.IO) {
             try {
-                RetrofitClient.
+                RetrofitClient.visitService.getVisits()
+            } catch (e: Exception) {
+                emptyList()
             }
         }
     }
-
 }
