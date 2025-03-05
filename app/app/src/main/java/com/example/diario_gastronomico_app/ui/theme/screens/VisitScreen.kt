@@ -61,7 +61,7 @@ fun VisitItem(visit: Visit) {
             Text(text = "Avaliação: ${visit.rating} estrelas.")
             Text(text = visit.comment)
             val formattedDate = visit.visitDate.format(java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"))
-            Text(text = "Data da visita: ${formattedDate}")
+            Text(text = "Data da visita: $formattedDate")
         }
     }
 }

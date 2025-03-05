@@ -56,16 +56,16 @@ fun HomeScreen(navController: NavController) {
                 onClick = { navController.navigate("restaurants") },
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Color(0xFF23395B))) {
-                Text("Meus Restaurantes",
+                Text("Restaurantes",
                     style = TextStyle(fontSize = 20.sp),
                     color = Color.White
                 )
             }
             Button(
-                onClick = {},
+                onClick = { navController.navigate("visits")},
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Color(0xFF23395B))) {
-                Text("Favoritos",
+                Text("Visitas",
                     style = TextStyle(fontSize = 20.sp),
                     color = Color.White)
             }
