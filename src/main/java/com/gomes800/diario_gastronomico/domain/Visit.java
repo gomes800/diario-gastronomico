@@ -1,5 +1,6 @@
 package com.gomes800.diario_gastronomico.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,6 +9,7 @@ import lombok.Setter;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 @Entity
 @Table(name = "tb_visita")
@@ -32,5 +34,10 @@ public class Visit implements Serializable {
     private byte rating;
     private String comment;
     private LocalDateTime visitDate;
+
+    @PrePersist
+    public void prePersist() {
+        visitDate = LocalDateTime.now();
+    }
 
 }
