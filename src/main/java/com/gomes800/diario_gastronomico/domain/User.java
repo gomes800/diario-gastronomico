@@ -1,5 +1,7 @@
 package com.gomes800.diario_gastronomico.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -27,6 +29,7 @@ public class User implements Serializable {
     private String password;
     private LocalDateTime createDate;
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
     private List<Visit> visits;
 
 
