@@ -13,7 +13,7 @@ import java.io.IOException;
 public class FirebaseConfig {
 
     @Bean
-    public void initializeFirebase() throws IOException {
+    public FirebaseApp initializeFirebase() throws IOException {
         FileInputStream serviceAccount = new FileInputStream("src/main/resources/diario-gastronomico-firebase-adminsdk-fbsvc-3f3e079a4c.json");
 
         FirebaseOptions options = FirebaseOptions.builder()
@@ -21,6 +21,6 @@ public class FirebaseConfig {
                 .setStorageBucket("diario-gastronomico.appspot.com")
                 .build();
 
-        FirebaseApp.initializeApp(options);
+        return FirebaseApp.initializeApp(options);
     }
 }
