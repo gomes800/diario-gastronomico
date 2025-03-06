@@ -7,6 +7,6 @@ data class User(
     val name: String,
     val email: String,
     val password: String,
-    val createDate: LocalDateTime,
+    val createDate: String,
     val visits: List<Visit>
 )

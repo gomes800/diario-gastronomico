@@ -1,5 +1,6 @@
 package com.example.diario_gastronomico_app.repositories
 
+import android.util.Log
 import com.example.diario_gastronomico_app.domain.Visit
 import com.example.diario_gastronomico_app.network.RetrofitClient
 import kotlinx.coroutines.Dispatchers

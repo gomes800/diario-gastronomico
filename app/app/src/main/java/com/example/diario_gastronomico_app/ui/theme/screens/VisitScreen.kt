@@ -19,11 +19,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.compose.rememberNavController
 import com.example.diario_gastronomico_app.domain.Visit
 import com.example.diario_gastronomico_app.viewModel.VisitViewModel
 
+@Preview
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun VisitScreen(viewModel: VisitViewModel = viewModel()) {

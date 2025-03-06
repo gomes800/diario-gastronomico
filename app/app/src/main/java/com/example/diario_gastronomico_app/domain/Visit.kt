@@ -8,5 +8,5 @@ data class Visit(
     val restaurant: Restaurant,
     val rating: Byte,
     val comment: String,
-    val visitDate: LocalDateTime
+    val visitDate: String
 )
