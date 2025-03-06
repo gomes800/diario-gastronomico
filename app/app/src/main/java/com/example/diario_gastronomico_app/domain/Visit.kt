@@ -8,5 +8,6 @@ data class Visit(
     val restaurant: Restaurant,
     val rating: Byte,
     val comment: String,
-    val visitDate: String
+    val visitDate: String,
+    val photos: List<String>
 )
