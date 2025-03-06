@@ -10,6 +10,7 @@ import lombok.Setter;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "tb_visita")
@@ -36,8 +37,12 @@ public class Visit implements Serializable {
     private LocalDateTime visitDate;
 
     @PrePersist
-    public void prePersist() {
+    private void prePersist() {
         visitDate = LocalDateTime.now();
     }
 
+    @ElementCollection
+    @CollectionTable(name = "visit_photos", joinColumns = @JoinColumn(name = "visit_id"))
+    @Column(name = "photo_url")
+    private List<String> photos = new ArrayList<>();
 }
