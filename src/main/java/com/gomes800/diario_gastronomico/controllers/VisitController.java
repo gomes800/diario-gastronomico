@@ -1,12 +1,15 @@
 package com.gomes800.diario_gastronomico.controllers;
 
 import com.gomes800.diario_gastronomico.domain.Visit;
+import com.gomes800.diario_gastronomico.services.FirebaseStorageService;
 import com.gomes800.diario_gastronomico.services.VisitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,6 +19,8 @@ public class VisitController {
 
     @Autowired
     private VisitService service;
+
+    private FirebaseStorageService firebaseStorageService;
 
     @GetMapping
     public List<Visit> findAll() {
@@ -54,4 +59,15 @@ public class VisitController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    @PostMapping("/upload-photo")
+    public ResponseEntity<String> uploadPhoto(@RequestParam("file") MultipartFile file) {
+        try {
+            String imageUrl = firebaseStorageService.uploadImage(file);
+            return ResponseEntity.ok(imageUrl);
+        } catch (IOException e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao fazer upload da imagem.");
+        }
+    }
+
 }
