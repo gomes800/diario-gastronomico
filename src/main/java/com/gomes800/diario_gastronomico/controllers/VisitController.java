@@ -34,9 +34,19 @@ public class VisitController {
     }
 
     @PostMapping("/insert")
-    public ResponseEntity<Visit> insertVisit(@RequestBody Visit visit) {
-        Visit newVisit = service.insert(visit);
-        return new ResponseEntity<>(newVisit, HttpStatus.CREATED);
+    public ResponseEntity<Visit> insertVisit(@RequestPart("visit") Visit visit, @RequestPart(value = "file", required = false) MultipartFile file) {
+        try {
+            if (file != null) {
+                String imageUrl = firebaseStorageService.uploadImage(file);
+                visit.getPhotos().add(imageUrl);
+            }
+
+            Visit newVisit = service.insert(visit);
+            return new ResponseEntity<>(newVisit, HttpStatus.CREATED);
+
+        } catch (IOException e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
     }
 
     @PutMapping("/{id}")
@@ -57,16 +67,6 @@ public class VisitController {
             return ResponseEntity.noContent().build();
         } else {
             return ResponseEntity.notFound().build();
-        }
-    }
-
-    @PostMapping("/upload-photo")
-    public ResponseEntity<String> uploadPhoto(@RequestParam("file") MultipartFile file) {
-        try {
-            String imageUrl = firebaseStorageService.uploadImage(file);
-            return ResponseEntity.ok(imageUrl);
-        } catch (IOException e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao fazer upload da imagem.");
         }
     }
 
