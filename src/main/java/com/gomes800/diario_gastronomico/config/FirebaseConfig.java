@@ -14,7 +14,7 @@ public class FirebaseConfig {
 
     @Bean
     public FirebaseApp initializeFirebase() throws IOException {
-        FileInputStream serviceAccount = new FileInputStream("src/main/resources/diario-gastronomico-firebase-adminsdk-fbsvc-3f3e079a4c.json");
+        FileInputStream serviceAccount = new FileInputStream("src/main/resources/diario-gastronomico-firebase-adminsdk-fbsvc-0434ea0478.json");
 
         FirebaseOptions options = FirebaseOptions.builder()
                 .setCredentials(GoogleCredentials.fromStream(serviceAccount))
