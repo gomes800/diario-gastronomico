@@ -15,19 +15,4 @@ public interface GooglePlacesClient {
             @RequestParam("type") String type,
             @RequestParam("key") String apiKey
     );
-
-    @GetMapping("/nearbysearch/json")
-    PlacesSearchResponse searchNearbyPlaces(
-            @RequestParam("location") String location,
-            @RequestParam("radius") Integer radius,
-            @RequestParam("type") String type,
-            @RequestParam("key") String apiKey
-    );
-
-    @GetMapping("/details/json")
-    PlaceDetailsResponse getPlaceDetails(
-            @RequestParam("place_id") String placeId,
-            @RequestParam("fields") String fields,
-            @RequestParam("key") String apiKey
-    );
 }
