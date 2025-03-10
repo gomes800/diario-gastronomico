@@ -2,7 +2,6 @@ package com.gomes800.diario_gastronomico.controllers;
 
 
 import com.gomes800.diario_gastronomico.domain.Restaurant;
-import com.gomes800.diario_gastronomico.dto.PlaceResult;
 import com.gomes800.diario_gastronomico.services.RestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,9 +18,6 @@ public class RestaurantController {
     @Autowired
     private RestaurantService service;
 
-    @Autowired
-    private GooglePlacesService googlePlacesService;
-
     @GetMapping
     public List<Restaurant> findAll() {
         return service.findAll();
@@ -31,12 +27,6 @@ public class RestaurantController {
     public ResponseEntity<Restaurant> findById(@PathVariable Long id) {
         Optional<Restaurant> restaurant = service.findById(id);
         return restaurant.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
-    }
-
-    @GetMapping("/search")
-    public ResponseEntity<List<PlaceResult>> searchRestaurants(@RequestParam String query) {
-        List<PlaceResult> results = googlePlacesService.searchRestaurants(query);
-        return ResponseEntity.ok(results);
     }
 
     @PostMapping("/insert")
