@@ -3,7 +3,6 @@ package com.gomes800.diario_gastronomico.controllers;
 
 import com.gomes800.diario_gastronomico.domain.Restaurant;
 import com.gomes800.diario_gastronomico.dto.PlaceResult;
-import com.gomes800.diario_gastronomico.services.GooglePlacesService;
 import com.gomes800.diario_gastronomico.services.RestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

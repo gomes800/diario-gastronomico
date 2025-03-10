@@ -1,11 +1,13 @@
 package com.gomes800.diario_gastronomico.services;
 
+import com.gomes800.diario_gastronomico.domain.Restaurant;
 import com.gomes800.diario_gastronomico.domain.Visit;
 import com.gomes800.diario_gastronomico.repositories.VisitRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,6 +18,7 @@ public class VisitService {
     @Autowired
     private VisitRepository repository;
 
+
     public List<Visit> findAll() {
         return repository.findAll();
     }
@@ -24,6 +27,7 @@ public class VisitService {
         return repository.findById(id);
     }
 
+    @Transactional
     public Visit insert(Visit obj) {
         return repository.save(obj);
     }
