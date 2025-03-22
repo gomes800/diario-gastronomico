@@ -1,4 +1,4 @@
-package com.gomes800.diario_gastronomico.config;
+package com.gomes800.diario_gastronomico.infra.firebase;
 
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.firebase.FirebaseApp;
