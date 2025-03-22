@@ -36,6 +36,11 @@ public class User implements Serializable, UserDetails {
     @JsonIgnore
     private List<Visit> visits;
 
+    public User(String login, String password, UserRole role) {
+        this.login = login;
+        this.password = password;
+        this.role = role;
+    }
 
     @PrePersist
     public void prePersist() {
