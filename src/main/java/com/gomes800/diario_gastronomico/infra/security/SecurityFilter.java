@@ -7,6 +7,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -27,6 +28,11 @@ public class SecurityFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+        if (request.getMethod().equals(HttpMethod.GET.name()) && request.getRequestURI().equals("/restaurants")) {
+            // Não precisa de autenticação para a rota GET /restaurants
+            filterChain.doFilter(request, response);
+            return;
+        }
         var token = this.recoverToken(request);
         if (token != null){
             var login = tokenService.validateToken(token);
